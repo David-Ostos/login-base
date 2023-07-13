@@ -118,7 +118,7 @@
 <script setup lang="ts">
 import BotonSocial from '@/components/botonSocial.vue';
 import { ref } from 'vue';
-import imgGoogle from '../assets/google.svg';
+import imgGoogle from 'assets/google.svg';
 import useAuthStore from '@/store/auth';
 import router from '@/router';
 

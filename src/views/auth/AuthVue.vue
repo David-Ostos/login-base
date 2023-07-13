@@ -7,7 +7,7 @@
         <div class="w-full xl:w-3/4 lg:w-11/12 flex">
           <!-- Col -->
           <div
-            class="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg bg-cyber bg-[-5rem]"
+            class="w-full h-auto bg-gray-400 hidden lg:block lg:w-1/2 bg-cover rounded-l-lg bg-car-login bg-[-10rem]"
           ></div>
           <!-- Col -->
           <div class="w-full lg:w-1/2 text-gray-700 bg-white p-5 rounded-lg lg:rounded-l-none">
@@ -46,16 +46,15 @@
                 <button
                   class="w-full px-4 py-2 font-bold text-white bg-blue-500 rounded-full hover:bg-blue-700 focus:outline-none focus:shadow-outline"
                   type="button"
-                  @click="authUser"
+                  @click.prevent="authUser"
                 >
                   Iniciar sesión
                 </button>
               </div>
               <hr class="my-6 border-t" />
               <BotonSocial
-                @eventSocial="googleSignIn"
-                :imagen="imgGoogle"
-                name="Inica sesión con Google"
+              name="Inica sesión con Google"
+              :imagen="imgGoogle"
               />
               <hr class="my-6 border-t" />
               <div class="text-center">
@@ -79,42 +78,26 @@
   </div>
 </template>
 
-<script lang="ts" setup>
-import BotonSocial from '@/components/botonSocial.vue';
-import { ref } from 'vue';
-import {
-  getAuth,
-  signInWithEmailAndPassword,
-  GoogleAuthProvider,
-  signInWithPopup
-} from 'firebase/auth';
+<script setup lang="ts">
+  import BotonSocial from '@/components/botonSocial.vue';
+  import { ref } from 'vue';
+  import AuthService from '@/services/AuthService';
+  import imgGoogle from 'assets/google.svg'
 
-import imgGoogle from '../assets/google.svg';
 
-let email = ref('');
-let password = ref('');
-const auth = getAuth();
+  let email = ref('');
+  let password = ref('');
 
-const authUser = () => {
-  signInWithEmailAndPassword(auth, email.value, password.value)
-    .then(() => {
-      alert('Éxito!');
-    })
-    .catch((error) => {
-      alert('Error: ' + error.message);
-      throw new Error(error);
-    });
-};
-const provider = new GoogleAuthProvider();
+  
+  const authUser = async () => {    
+    const auth = new AuthService();
+    const success = await auth.login(email.value, password.value)
+    if(success){
+      alert('Exito!')
+    }else{
+      alert("Login failed")
+    }
+  }
 
-function googleSignIn() {
-  signInWithPopup(auth, provider)
-    .then((result) => {
-      alert('Signed in!');
-      console.log(result);
-    })
-    .catch((error) => {
-      throw new Error(error);
-    });
-}
+
 </script>

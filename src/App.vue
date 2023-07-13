@@ -58,6 +58,7 @@ const logout = () => {
         <RouterLink to="/auth">Backend</RouterLink>
         <RouterLink to="/authFire"> Firebase</RouterLink>
         <RouterLink to="/authSocial"> Social</RouterLink>
+        <RouterLink to="/mdb"> Mdb</RouterLink>
       </nav>
     </div>
   </header>
@@ -65,7 +66,7 @@ const logout = () => {
   <RouterView />
 </template>
 
-<style scoped>
+<style lang="scss">
 header {
   line-height: 1.5;
   max-height: 100vh;
@@ -78,7 +79,7 @@ nav {
 }
 
 nav a.router-link-exact-active {
-  color: #3b82f6 !important;
+  color: #386bc0 ;
 }
 
 nav a.router-link-exact-active:hover {
@@ -87,7 +88,7 @@ nav a.router-link-exact-active:hover {
 
 nav a {
   text-decoration: none;
-  color: var(--color-text);
+  color: #8d8d8d;
   transition: 0.4s;
   display: inline-block;
   padding: 0 1rem;

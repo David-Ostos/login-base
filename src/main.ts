@@ -1,11 +1,13 @@
-import './assets/main.css';
-
+import 'assets/main.css';
 import { createApp } from 'vue';
 import { createPinia } from 'pinia';
 import App from './App.vue';
 import router from './router';
 import './style.css';
-
+import 'mdb-vue-ui-kit/css/mdb.min.css';
+/* import 'bootstrap/dist/css/bootstrap.min.css'*/
+/* import 'bootstrap' 
+ */
 
 //firebase
 import { initializeApp } from 'firebase/app';
@@ -21,6 +23,7 @@ const firebaseConfig = {
   appId: '1:863293711818:web:3f2298a4e0aba8b3e39b33',
   measurementId: 'G-J2H1MNY1JD'
 };
+
 
 // Initialize Firebase
 initializeApp(firebaseConfig);

@@ -17,7 +17,7 @@ const router = createRouter({
     {
       path: '/auth',
       name: 'auth',
-      component: () => import('../views/AuthVue.vue'),
+      component: () => import('../views/auth/AuthVue.vue'),
       meta: {
         requireAuth: false
       }
@@ -25,7 +25,7 @@ const router = createRouter({
     {
       path: '/registrar',
       name: 'registrar',
-      component: () => import('../views/registrarVue.vue'),
+      component: () => import('../views/auth/registrarVue.vue'),
       meta: {
         requireAuth: false
       }
@@ -33,7 +33,7 @@ const router = createRouter({
     {
       path: '/recuperar',
       name: 'recuperar',
-      component: () => import('../views/recuperarPassword.vue'),
+      component: () => import('../views/auth/recuperarPassword.vue'),
       meta: {
         requireAuth: false
       }
@@ -41,7 +41,7 @@ const router = createRouter({
     {
       path: '/authFire',
       name: 'authFire',
-      component: () => import('../views/FirebaseVue.vue'),
+      component: () => import('../views/auth/FirebaseVue.vue'),
       meta: {
         requireAuth: false
       }
@@ -49,10 +49,15 @@ const router = createRouter({
     {
       path: '/authSocial',
       name: 'authSocial',
-      component: () => import('../views/SocialVue.vue'),
+      component: () => import('../views/auth/SocialVue.vue'),
       meta: {
         requireAuth: false
       }
+    },
+    {
+      path: '/mdb',
+      name: 'mdb',
+      component : () => import('../views/mdbootstrap.vue')
     }
   ]
 });
