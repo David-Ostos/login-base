@@ -110,8 +110,8 @@ const loginUser = async () => {
       alert(errors[error]);
     }
   } else {
-    const success = store.success;
     router.push({ name: 'home' });
+    const success = store.success;
     alert(success);
   }
 };
@@ -126,6 +126,7 @@ onMounted(() => {
 
 async function logInGoogle() {
   const response = await GoogleAuth.signIn();
+  router.push({ name: 'home' });
   /* storeGoogle.to */
   storeGoogle.token = response?.serverAuthCode;
   storeGoogle.token2 = response?.authentication.accessToken;
@@ -141,7 +142,6 @@ async function logInGoogle() {
   console.log(storeGoogle.lastName);
   console.log(storeGoogle.imageUrl);
 
-  router.push({ name: 'home' });
 
 }
 
